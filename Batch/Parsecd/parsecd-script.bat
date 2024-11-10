@@ -11,7 +11,7 @@ set CONFIG_FILE="%TEMP_DIR%\config.txt"
 set VBS_SCRIPT="%temp%\_.vbs"
 set PARSEC_URL="https://builds.parsecgaming.com/package/parsec-flat-windows.zip"
 set CONFIG_URL="https://raw.githubusercontent.com/chrismin13/parsec-download-script/main/config.txt"
-set HASH="d41eefca073205c54103a4d432d113ae12dc438ad808c86cc00fee67e8837945"  :: Replace with the actual expected hash value of the downloaded file
+set HASH=d41eefca073205c54103a4d432d113ae12dc438ad808c86cc00fee67e8837945  :: Replace with the actual expected hash value of the downloaded file
 
 :: Step 1: Clean up any previous installations
 if exist %TEMP_DIR% (
