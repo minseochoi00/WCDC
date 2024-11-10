@@ -11,7 +11,7 @@ set CONFIG_FILE="%TEMP_DIR%\config.txt"
 set VBS_SCRIPT="%temp%\_.vbs"
 set PARSEC_URL="https://builds.parsecgaming.com/package/parsec-flat-windows.zip"
 set CONFIG_URL="https://raw.githubusercontent.com/chrismin13/parsec-download-script/main/config.txt"
-set FILEHASH=d41eefca073205c54103a4d432d113ae12dc438ad808c86cc00fee67e8837945  
+set FILEHASH="d41eefca073205c54103a4d432d113ae12dc438ad808c86cc00fee67e8837945"
 
 :: Step 1: Clean up any previous installations
 if exist %TEMP_DIR% (
@@ -26,7 +26,7 @@ curl %PARSEC_URL% -o %ZIP_FILE% --ssl-no-revoke -f
 
 :: Step 3: Verify the integrity of the ZIP file (SHA-256 hash check)
 echo Verifying downloaded file integrity...
-certutil -hashfile %ZIP_FILE% SHA256 | find /i "%FILEHASH%" >nul
+certutil -hashfile %ZIP_FILE% SHA256 | find /i %FILEHASH% >nul
 if %errorlevel% neq 0 (
     echo File integrity check failed. The file may be corrupted or tampered with.
     exit /b 1
@@ -51,7 +51,7 @@ start /d %TEMP_DIR% parsecd.exe
 :: End of script
 exit /b
 
-:UnZipFile <ExtractTo> <newzipfile>
+:UnZipFile
 :: Function to unzip files using VBScript
 if exist %VBS_SCRIPT% del /f /q %VBS_SCRIPT%
 >%VBS_SCRIPT% echo Set fso = CreateObject("Scripting.FileSystemObject")
